@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     return true
   }
   
-  func playAudioFile() {
+  func buttonClickSound() {
     if volumeEnable {
     guard let url = Bundle.main.url(forResource: "ButtonClick", withExtension: "mp3") else { return }
       

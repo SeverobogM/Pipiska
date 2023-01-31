@@ -1,10 +1,6 @@
 import UIKit
 
 final class SelectedViewController: UIViewController {
-    
-    private var allGames: [SquashGame] = []
-    private var league = SquashData(name: "Name", id: "614")
-    
   var control: UISegmentedControl = {
     let segmentItems = ["Upcoming", "Past"]
     let control = UISegmentedControl(items: segmentItems)
@@ -41,10 +37,12 @@ final class SelectedViewController: UIViewController {
     switch sender.selectedSegmentIndex {
       case 0:
         control.selectedSegmentIndex = 0
-      matchesCollectionView.reloadData()
+        matchesCollectionView.reloadData()
+        AppDelegate.shared.buttonClickSound()
       case 1:
         control.selectedSegmentIndex = 1
-      matchesCollectionView.reloadData()
+        matchesCollectionView.reloadData()
+        AppDelegate.shared.buttonClickSound()
       default:
         break
     }
@@ -59,7 +57,7 @@ final class SelectedViewController: UIViewController {
       matchesCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
       matchesCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0),
       matchesCollectionView.topAnchor.constraint(equalTo: control.bottomAnchor),
-      matchesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+      matchesCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
       ])
   }
   
@@ -76,8 +74,7 @@ extension SelectedViewController : UICollectionViewDelegate, UICollectionViewDat
     else {
       fatalError("UnSupported")
     }
-      cell.configure(match: allGames[indexPath.row], league: league)
-      
+    cell.configure()
     return cell
   }
   

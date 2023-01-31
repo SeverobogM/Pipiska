@@ -38,8 +38,6 @@ final class MatchCollectionViewCell: UICollectionViewCell {
     let label = UILabel()
     label.text = "Team One"
     label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-      label.numberOfLines = 0
-      label.font = label.font.withSize(13)
     label.textAlignment = .center
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
@@ -48,8 +46,6 @@ final class MatchCollectionViewCell: UICollectionViewCell {
   let secondName: UILabel = {
     let label = UILabel()
     label.text = "Team Two"
-      label.numberOfLines = 0
-      label.font = label.font.withSize(13)
     label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     label.textAlignment = .center
     label.translatesAutoresizingMaskIntoConstraints = false
@@ -57,8 +53,18 @@ final class MatchCollectionViewCell: UICollectionViewCell {
   }()
   
   let dateLabel: UILabel = {
-    var label = UILabel()
+    let label = UILabel()
     label.text = "20.02.2023"
+    label.font = label.font.withSize(20)
+    label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+    label.textAlignment = .center
+    label.translatesAutoresizingMaskIntoConstraints = false
+    return label
+  }()
+  
+  let timeLabel: UILabel = {
+    let label = UILabel()
+    label.text = "20:00"
     label.font = label.font.withSize(20)
     label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     label.textAlignment = .center
@@ -83,19 +89,9 @@ final class MatchCollectionViewCell: UICollectionViewCell {
     fatalError("init(coder:) has not been implemented")
   }
   
-    func configure(match: SquashGame, league: SquashData) {
-        let date = Date(timeIntervalSince1970: Double(match.time)!)
-            let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = DateFormatter.Style.short //Set time style
-            dateFormatter.dateStyle = DateFormatter.Style.short //Set date style
-            dateFormatter.timeZone = .current
-            let localDate = dateFormatter.string(from: date)
-        let components = localDate.components(separatedBy: " at ")
-        
-        firstName.text = match.home.name
-        secondName.text = match.away.name
-        dateLabel.text = components[0]
-    }
+  public func configure() {
+  
+  }
   
   private func addSubviews() {
     addSubview(contentView)
@@ -106,7 +102,7 @@ final class MatchCollectionViewCell: UICollectionViewCell {
     contentView.addSubview(firstName)
     contentView.addSubview(secondName)
     contentView.addSubview(dateLabel)
-//    contentView.addSubview(timeLabel)
+    contentView.addSubview(timeLabel)
     contentView.addSubview(isSelectedButton)
     isSelectedButton.setBackgroundImage(imageGray, for: .normal)
     isSelectedButton.addTarget(self, action: #selector(selected), for: .touchUpInside)
@@ -146,17 +142,17 @@ final class MatchCollectionViewCell: UICollectionViewCell {
       secondLogo.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 18),
       secondLogo.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -48),
       
+      firstName.centerXAnchor.constraint(equalTo: firstLogo.centerXAnchor),
       firstName.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -19),
-      firstName.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 2),
       
       secondName.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -19),
-      secondName.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -2),
+      secondName.centerXAnchor.constraint(equalTo: secondLogo.centerXAnchor),
       
       dateLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 33),
       dateLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
       
-//      timeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -33),
-//      timeLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+      timeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -33),
+      timeLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
       
       isSelectedButton.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
       isSelectedButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),

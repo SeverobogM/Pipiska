@@ -39,7 +39,7 @@ class CupListViewController: UIViewController {
       matchesCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
       matchesCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0),
       matchesCollectionView.topAnchor.constraint(equalTo: button.bottomAnchor),
-      matchesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+      matchesCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
       ])
   }
     
@@ -56,7 +56,7 @@ extension CupListViewController : UICollectionViewDelegate, UICollectionViewData
     else {
       fatalError("UnSupported")
     }
-      cell.leagueCountry.image = UIImage(named: "\(indexPath.row)")
+    cell.configure()
     return cell
   }
   

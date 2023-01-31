@@ -1,41 +1,22 @@
 import UIKit
 
 class StatisticViewController: UIViewController {
+  let statsArray = ["Attacks", "Ball Safe","Corners","CornerF","CornerH","Dangerous attacks","Goals","On target","Off target", "Penalties", "Red cards", "Substitutions", "Yellow cards", "Yellowred cards"]
   
-  private lazy var scrollView : UIScrollView =
-  {
-    let scrollView = UIScrollView()
-    scrollView.backgroundColor = #colorLiteral(red: 0.8797428608, green: 0.8797428012, blue: 0.8797428608, alpha: 1)
-    scrollView.frame = view.bounds
-    scrollView.contentSize = contentSize
-    
-    return scrollView
+  let backTopBar: UIButton = {
+    let button = UIButton()
+    button.backgroundColor = #colorLiteral(red: 0, green: 0.5759081841, blue: 0.4402300715, alpha: 1)
+    button.translatesAutoresizingMaskIntoConstraints = false
+    return button
   }()
   
-  private lazy var contentView : UIView =
-  {
-    let contentView = UIView()
-    contentView.backgroundColor = #colorLiteral(red: 0.8797428608, green: 0.8797428012, blue: 0.8797428608, alpha: 1)
-    scrollView.frame.size = contentSize
-    
-    return contentView
+  var button: UIButton = {
+    let button = UIButton()
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.backgroundColor = #colorLiteral(red: 0, green: 0.5759081841, blue: 0.4402300715, alpha: 1)
+    button.isHidden = true
+    return button
   }()
-  
-  private var stackView : UIStackView =
-  {
-    let stackView = UIStackView()
-    stackView.axis = .vertical
-    stackView.alignment = .center
-    stackView.spacing = 20
-    stackView.translatesAutoresizingMaskIntoConstraints = false
-    
-    return stackView
-  }()
-  
-  var contentSize : CGSize
-  {
-    CGSize(width: view.frame.width, height: view.frame.height + 500)
-  }
   
   let underDate: UIImageView = {
     let image = UIImage(named: "UnderStatDate")
@@ -105,221 +86,12 @@ class StatisticViewController: UIViewController {
     return button
   }()
   
-  let attacksLabel: UILabel = {
-    let label = UILabel()
-    label.text = "Attacks"
-    label.textColor = #colorLiteral(red: 0, green: 0.5759081841, blue: 0.4402300715, alpha: 1)
-    label.textAlignment = .center
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-  }()
-  
-  let attackRectangle: UIImageView = {
-    let image = UIImage(named: "StatsRectangle")
-    let imageView = UIImageView(image: image)
-    imageView.translatesAutoresizingMaskIntoConstraints = false
-    return imageView
-  }()
-  
-  let ballSafeLabel: UILabel = {
-    let label = UILabel()
-    label.text = "Ball Safe"
-    label.textColor = #colorLiteral(red: 0, green: 0.5759081841, blue: 0.4402300715, alpha: 1)
-    label.textAlignment = .center
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-  }()
-  
-  let ballSafeRectangle: UIImageView = {
-    let image = UIImage(named: "StatsRectangle")
-    let imageView = UIImageView(image: image)
-    imageView.translatesAutoresizingMaskIntoConstraints = false
-    return imageView
-  }()
-  
-  let cornersLabel: UILabel = {
-    let label = UILabel()
-    label.text = "Corners"
-    label.textColor = #colorLiteral(red: 0, green: 0.5759081841, blue: 0.4402300715, alpha: 1)
-    label.textAlignment = .center
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-  }()
-  
-  let cornersRectangle: UIImageView = {
-    let image = UIImage(named: "StatsRectangle")
-    let imageView = UIImageView(image: image)
-    imageView.translatesAutoresizingMaskIntoConstraints = false
-    return imageView
-  }()
-  
-  let cornerFLabel: UILabel = {
-    let label = UILabel()
-    label.text = "Corner F"
-    label.textColor = #colorLiteral(red: 0, green: 0.5759081841, blue: 0.4402300715, alpha: 1)
-    label.textAlignment = .center
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-  }()
-  
-  let cornersFRectangle: UIImageView = {
-    let image = UIImage(named: "StatsRectangle")
-    let imageView = UIImageView(image: image)
-    imageView.translatesAutoresizingMaskIntoConstraints = false
-    return imageView
-  }()
-  
-  let cornerHLabel: UILabel = {
-    let label = UILabel()
-    label.text = "Corner H"
-    label.textColor = #colorLiteral(red: 0, green: 0.5759081841, blue: 0.4402300715, alpha: 1)
-    label.textAlignment = .center
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-  }()
-  
-  let cornersHRectangle: UIImageView = {
-    let image = UIImage(named: "StatsRectangle")
-    let imageView = UIImageView(image: image)
-    imageView.translatesAutoresizingMaskIntoConstraints = false
-    return imageView
-  }()
-  
-  let dangerousAttacksLabel: UILabel = {
-    let label = UILabel()
-    label.text = "Dangerous attacks"
-    label.textColor = #colorLiteral(red: 0, green: 0.5759081841, blue: 0.4402300715, alpha: 1)
-    label.textAlignment = .center
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-  }()
-  
-  let dangAttackRectangle: UIImageView = {
-    let image = UIImage(named: "StatsRectangle")
-    let imageView = UIImageView(image: image)
-    imageView.translatesAutoresizingMaskIntoConstraints = false
-    return imageView
-  }()
-  
-  let goalsLabel: UILabel = {
-    let label = UILabel()
-    label.text = "Goals"
-    label.textColor = #colorLiteral(red: 0, green: 0.5759081841, blue: 0.4402300715, alpha: 1)
-    label.textAlignment = .center
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-  }()
-  
-  let goalsRectangle: UIImageView = {
-    let image = UIImage(named: "StatsRectangle")
-    let imageView = UIImageView(image: image)
-    imageView.translatesAutoresizingMaskIntoConstraints = false
-    return imageView
-  }()
-  
-  let offTargetLabel: UILabel = {
-    let label = UILabel()
-    label.text = "Off target"
-    label.textColor = #colorLiteral(red: 0, green: 0.5759081841, blue: 0.4402300715, alpha: 1)
-    label.textAlignment = .center
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-  }()
-  
-  let offTargetRactangle: UIImageView = {
-    let image = UIImage(named: "StatsRectangle")
-    let imageView = UIImageView(image: image)
-    imageView.translatesAutoresizingMaskIntoConstraints = false
-    return imageView
-  }()
-  
-  let onTargetLabel: UILabel = {
-    let label = UILabel()
-    label.text = "On target"
-    label.textColor = #colorLiteral(red: 0, green: 0.5759081841, blue: 0.4402300715, alpha: 1)
-    label.textAlignment = .center
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-  }()
-  
-  let onTargetRectangle: UIImageView = {
-    let image = UIImage(named: "StatsRectangle")
-    let imageView = UIImageView(image: image)
-    imageView.translatesAutoresizingMaskIntoConstraints = false
-    return imageView
-  }()
-  
-  let penaltiesLabel: UILabel = {
-    let label = UILabel()
-    label.text = "Penalties"
-    label.textColor = #colorLiteral(red: 0, green: 0.5759081841, blue: 0.4402300715, alpha: 1)
-    label.textAlignment = .center
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-  }()
-  
-  let penaltiesRectangle: UIImageView = {
-    let image = UIImage(named: "StatsRectangle")
-    let imageView = UIImageView(image: image)
-    imageView.translatesAutoresizingMaskIntoConstraints = false
-    return imageView
-  }()
-  
-  let redCardsLabel: UILabel = {
-    let label = UILabel()
-    label.text = "Red cards"
-    label.textColor = #colorLiteral(red: 0, green: 0.5759081841, blue: 0.4402300715, alpha: 1)
-    label.textAlignment = .center
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-  }()
-  
-  let redCardsRectangle: UIImageView = {
-    let image = UIImage(named: "StatsRectangle")
-    let imageView = UIImageView(image: image)
-    imageView.translatesAutoresizingMaskIntoConstraints = false
-    return imageView
-  }()
-  
-  let substitutionsLabel: UILabel = {
-    let label = UILabel()
-    label.text = "Substitutions"
-    label.textColor = #colorLiteral(red: 0, green: 0.5759081841, blue: 0.4402300715, alpha: 1)
-    label.textAlignment = .center
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-  }()
-  
-  let substitutionsRectangle: UIImageView = {
-    let image = UIImage(named: "StatsRectangle")
-    let imageView = UIImageView(image: image)
-    imageView.translatesAutoresizingMaskIntoConstraints = false
-    return imageView
-  }()
-  
-  let yellowCardsLabel: UILabel = {
-    let label = UILabel()
-    label.text = "Yellow cards"
-    label.textColor = #colorLiteral(red: 0, green: 0.5759081841, blue: 0.4402300715, alpha: 1)
-    label.textAlignment = .center
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-  }()
-  
-  let yellowCardsRectangle: UIImageView = {
-    let image = UIImage(named: "StatsRectangle")
-    let imageView = UIImageView(image: image)
-    imageView.translatesAutoresizingMaskIntoConstraints = false
-    return imageView
-  }()
-  
-  let yellowRedCardsLabel: UILabel = {
-    let label = UILabel()
-    label.text = "Yellowred cards"
-    label.textColor = #colorLiteral(red: 0, green: 0.5759081841, blue: 0.4402300715, alpha: 1)
-    label.textAlignment = .center
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
+  private let statisticCollectionView: UICollectionView = {
+    let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+    collectionView.translatesAutoresizingMaskIntoConstraints = false
+    collectionView.register(StatisticCollectionViewCell.self, forCellWithReuseIdentifier: StatisticCollectionViewCell.id)
+    collectionView.backgroundColor = .clear
+    return collectionView
   }()
   
   let posession: UIImageView = {
@@ -329,39 +101,54 @@ class StatisticViewController: UIViewController {
     return imageView
   }()
   
-  let field: UIButton = {
+  let field: UIImageView = {
     let image = UIImage(named: "FootballField")
+    let imageView = UIImageView(image: image)
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    return imageView
+  }()
+  
+  let firstPossession = 50
+  
+  let posessionView: UIImageView = {
+    let image = UIImage(named: "PossessionView")
+    let imageView = UIImageView(image: image)
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    return imageView
+  }()
+  
+  let posessionLeft: UIButton = {
+    let image = UIImage(named: "UnderPossession")
     let button = UIButton()
+    button.isEnabled = false
     button.setBackgroundImage(image, for: .normal)
+    button.setTitle("50", for: .normal)
     button.translatesAutoresizingMaskIntoConstraints = false
     return button
   }()
   
-  let backTopBar: UIButton = {
+  let posessionRight: UIButton = {
+    let image = UIImage(named: "UnderPossession")
     let button = UIButton()
-    button.backgroundColor = #colorLiteral(red: 0, green: 0.5759081841, blue: 0.4402300715, alpha: 1)
+    button.isEnabled = false
+    button.setBackgroundImage(image, for: .normal)
+    button.setTitle("50", for: .normal)
     button.translatesAutoresizingMaskIntoConstraints = false
     return button
   }()
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = "Statistic"
     view.backgroundColor = #colorLiteral(red: 0.8797428608, green: 0.8797428012, blue: 0.8797428608, alpha: 1)
     
+    var secondPossession = 100 - firstPossession
+    
     tabBarController?.tabBar.alpha = 0
     
-    addSubviews()
-    makeConstraints()
-  }
-  
-  private func addSubviews() {
-    view.addSubview(scrollView)
-    scrollView.addSubview(contentView)
-    contentView.addSubview(stackView)
-    
+    view.addSubview(button)
     view.addSubview(backTopBar)
-
+    
     view.addSubview(underDate)
     view.addSubview(dateLabel)
     
@@ -369,90 +156,59 @@ class StatisticViewController: UIViewController {
     view.addSubview(firstName)
     view.addSubview(secondLogo)
     view.addSubview(secondName)
-    
     view.addSubview(scoreLabel)
     view.addSubview(details)
     details.addTarget(self, action: #selector(detailsView), for: .touchUpInside)
     
-    //StatPositions
-    view.addSubview(attacksLabel)
-    view.addSubview(attackRectangle)
-    
-    view.addSubview(ballSafeLabel)
-    view.addSubview(ballSafeRectangle)
-    
-    view.addSubview(cornersLabel)
-    view.addSubview(cornersRectangle)
-    
-    view.addSubview(cornerFLabel)
-    view.addSubview(cornersFRectangle)
-    
-    view.addSubview(cornerHLabel)
-    view.addSubview(cornersHRectangle)
-    
-    view.addSubview(dangerousAttacksLabel)
-    view.addSubview(dangAttackRectangle)
-    
-    view.addSubview(goalsLabel)
-    view.addSubview(goalsRectangle)
-    
-    view.addSubview(offTargetLabel)
-    view.addSubview(offTargetRactangle)
-    
-    view.addSubview(onTargetLabel)
-    view.addSubview(onTargetRectangle)
-    
-    view.addSubview(penaltiesLabel)
-    view.addSubview(penaltiesRectangle)
-    
-    view.addSubview(redCardsLabel)
-    view.addSubview(redCardsRectangle)
-    
-    view.addSubview(substitutionsLabel)
-    view.addSubview(substitutionsRectangle)
-    
-    view.addSubview(yellowCardsLabel)
-    view.addSubview(yellowCardsRectangle)
-    
-    view.addSubview(yellowRedCardsLabel)
-
-    //BallPossession
     view.addSubview(posession)
     view.addSubview(field)
+    view.addSubview(posessionView)
+    view.addSubview(posessionLeft)
+    posessionLeft.setTitle("\(firstPossession)%", for: .normal)
+    view.addSubview(posessionRight)
+    posessionRight.setTitle("\(secondPossession)%", for: .normal)
+    
+    statisticCollectionView.delegate = self
+    statisticCollectionView.dataSource = self
+    view.addSubview(statisticCollectionView)
+    
+    makeConstraints()
   }
   
   @objc func detailsView() {
     let viewController = DetailsViewController()
     navigationController?.pushViewController(viewController, animated: true)
+    AppDelegate.shared.buttonClickSound()
   }
   
   private func makeConstraints() {
     NSLayoutConstraint.activate([
-      stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-      stackView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-      stackView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-      
       backTopBar.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      backTopBar.leftAnchor.constraint(equalTo: stackView.leftAnchor),
-      backTopBar.rightAnchor.constraint(equalTo: stackView.rightAnchor),
+      backTopBar.leftAnchor.constraint(equalTo: view.leftAnchor),
+      backTopBar.rightAnchor.constraint(equalTo: view.rightAnchor),
       backTopBar.topAnchor.constraint(equalTo: view.topAnchor),
       backTopBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
       
-      underDate.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      underDate.topAnchor.constraint(equalTo: stackView.safeAreaLayoutGuide.topAnchor, constant: 10),
+      button.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0.1),
+      button.leftAnchor.constraint(equalTo: view.leftAnchor),
+      button.rightAnchor.constraint(equalTo: view.rightAnchor),
       
+      underDate.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      underDate.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            
       dateLabel.centerYAnchor.constraint(equalTo: underDate.centerYAnchor),
       dateLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      
+            
       firstLogo.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 48),
-      firstLogo.topAnchor.constraint(equalTo: stackView.safeAreaLayoutGuide.topAnchor, constant: 40),
-      
+      firstLogo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+        
       firstName.topAnchor.constraint(equalTo: firstLogo.bottomAnchor, constant: 8),
       firstName.centerXAnchor.constraint(equalTo: firstLogo.centerXAnchor),
-      
+          
       secondLogo.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -48),
-      secondLogo.topAnchor.constraint(equalTo: stackView.safeAreaLayoutGuide.topAnchor, constant: 40),
-      
+      secondLogo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+            
       secondName.topAnchor.constraint(equalTo: secondLogo.bottomAnchor, constant: 8),
       secondName.centerXAnchor.constraint(equalTo: secondLogo.centerXAnchor),
       
@@ -460,82 +216,62 @@ class StatisticViewController: UIViewController {
       scoreLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       
       details.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      details.topAnchor.constraint(equalTo: stackView.safeAreaLayoutGuide.topAnchor, constant: 142),
-      
-      attacksLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      attacksLabel.topAnchor.constraint(equalTo: details.bottomAnchor, constant: 44),
-      attackRectangle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      attackRectangle.topAnchor.constraint(equalTo: attacksLabel.bottomAnchor, constant: 11),
-      
-      ballSafeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      ballSafeLabel.topAnchor.constraint(equalTo: attacksLabel.bottomAnchor, constant: 25),
-      ballSafeRectangle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      ballSafeRectangle.topAnchor.constraint(equalTo: ballSafeLabel.bottomAnchor, constant: 11),
-      
-      cornersLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      cornersLabel.topAnchor.constraint(equalTo: ballSafeLabel.bottomAnchor, constant: 25),
-      cornersRectangle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      cornersRectangle.topAnchor.constraint(equalTo: cornersLabel.bottomAnchor, constant: 11),
-      
-      cornerFLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      cornerFLabel.topAnchor.constraint(equalTo: cornersLabel.bottomAnchor, constant: 25),
-      cornersFRectangle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      cornersFRectangle.topAnchor.constraint(equalTo: cornerFLabel.bottomAnchor, constant: 11),
-      
-      cornerHLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      cornerHLabel.topAnchor.constraint(equalTo: cornerFLabel.bottomAnchor, constant: 25),
-      cornersHRectangle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      cornersHRectangle.topAnchor.constraint(equalTo: cornerHLabel.bottomAnchor, constant: 11),
-      
-      dangerousAttacksLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      dangerousAttacksLabel.topAnchor.constraint(equalTo: cornerHLabel.bottomAnchor, constant: 25),
-      dangAttackRectangle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      dangAttackRectangle.topAnchor.constraint(equalTo: dangerousAttacksLabel.bottomAnchor, constant: 11),
-      
-      goalsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      goalsLabel.topAnchor.constraint(equalTo: dangerousAttacksLabel.bottomAnchor, constant: 25),
-      goalsRectangle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      goalsRectangle.topAnchor.constraint(equalTo: goalsLabel.bottomAnchor, constant: 11),
-      
-      offTargetLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      offTargetLabel.topAnchor.constraint(equalTo: goalsLabel.bottomAnchor, constant: 25),
-      offTargetRactangle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      offTargetRactangle.topAnchor.constraint(equalTo: offTargetLabel.bottomAnchor, constant: 11),
-      
-      onTargetLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      onTargetLabel.topAnchor.constraint(equalTo: offTargetLabel.bottomAnchor, constant: 25),
-      onTargetRectangle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      onTargetRectangle.topAnchor.constraint(equalTo: onTargetLabel.bottomAnchor, constant: 11),
-      
-      penaltiesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      penaltiesLabel.topAnchor.constraint(equalTo: onTargetLabel.bottomAnchor, constant: 25),
-      penaltiesRectangle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      penaltiesRectangle.topAnchor.constraint(equalTo: penaltiesLabel.bottomAnchor, constant: 11),
-      
-      redCardsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      redCardsLabel.topAnchor.constraint(equalTo: penaltiesLabel.bottomAnchor, constant: 25),
-      redCardsRectangle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      redCardsRectangle.topAnchor.constraint(equalTo: redCardsLabel.bottomAnchor, constant: 11),
-      
-      substitutionsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      substitutionsLabel.topAnchor.constraint(equalTo: redCardsLabel.bottomAnchor, constant: 25),
-      substitutionsRectangle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      substitutionsRectangle.topAnchor.constraint(equalTo: substitutionsLabel.bottomAnchor, constant: 11),
-      
-      yellowCardsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      yellowCardsLabel.topAnchor.constraint(equalTo: substitutionsLabel.bottomAnchor, constant: 25),
-      yellowCardsRectangle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      yellowCardsRectangle.topAnchor.constraint(equalTo: yellowCardsLabel.bottomAnchor, constant: 11),
-      
-      yellowRedCardsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      yellowRedCardsLabel.topAnchor.constraint(equalTo: yellowCardsLabel.bottomAnchor, constant: 25),
-      
-      posession.topAnchor.constraint(equalTo: yellowRedCardsLabel.bottomAnchor, constant: 44),
-      posession.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      details.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 142),
       
       field.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      field.topAnchor.constraint(equalTo: posession.bottomAnchor, constant: 20)
+      field.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
+      
+      posession.bottomAnchor.constraint(equalTo: field.topAnchor, constant: -20),
+      posession.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      
+      statisticCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
+      statisticCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0),
+      statisticCollectionView.topAnchor.constraint(equalTo: details.bottomAnchor, constant: 20),
+      statisticCollectionView.bottomAnchor.constraint(equalTo: posession.topAnchor, constant: -20),
+      
+      posessionView.leftAnchor.constraint(equalTo: field.leftAnchor),
+      posessionView.bottomAnchor.constraint(equalTo: field.bottomAnchor),
+      posessionView.topAnchor.constraint(equalTo: field.topAnchor),
+      //posessionView.rightAnchor.constraint(equalTo: field.rightAnchor, constant: <#T##CGFloat#>),
+      
+      posessionLeft.centerYAnchor.constraint(equalTo: field.centerYAnchor),
+      posessionLeft.leftAnchor.constraint(equalTo: field.leftAnchor, constant: 40),
+      
+      posessionRight.centerYAnchor.constraint(equalTo: field.centerYAnchor),
+      posessionRight.rightAnchor.constraint(equalTo: field.rightAnchor, constant: -40)
     ])
   }
+  
+  func checkPossession () {
     
+  }
+    
+}
+
+extension StatisticViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+  
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return statsArray.count
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StatisticCollectionViewCell.id, for: indexPath) as? StatisticCollectionViewCell
+    else {
+      fatalError("UnSupported")
+    }
+    
+    cell.statsPositionName.text = statsArray[indexPath.row]
+    
+    cell.configure()
+    return cell
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: view.frame.width, height: 40)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    return 1
+  }
+
 }

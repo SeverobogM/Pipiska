@@ -11,7 +11,7 @@ class TabBarController: UITabBarController {
   }
   
   func setupTabBar() {
-    let scheduleViewController = createNavigationController(viewController: ScheduleViewController(league: SquashData(name: "Scotland FA Cup", id: "614")), itemName: "Schedule", itemImage: "Schedule", boolLarge: true)
+    let scheduleViewController = createNavigationController(viewController: ScheduleViewController(), itemName: "Schedule", itemImage: "Schedule", boolLarge: true)
     let selectedViewController = createNavigationController(viewController: SelectedViewController(), itemName: "Selected", itemImage: "Selected", boolLarge: true)
     let cupListViewController = createNavigationController(viewController: CupListViewController(), itemName: "CupList", itemImage: "CupList", boolLarge: true)
     let optionViewController = createNavigationController(viewController: OptionViewController(), itemName: "Option", itemImage: "Option", boolLarge: true)

@@ -153,6 +153,7 @@ class PreviewViewController: UIViewController {
   @objc func selfstat() {
     let viewController = SelfStatViewController()
     navigationController?.pushViewController(viewController, animated: true)
+    AppDelegate.shared.buttonClickSound()
   }
   
   @objc func openAbout() {
@@ -160,6 +161,7 @@ class PreviewViewController: UIViewController {
     openAboutEventView.isHidden = false
     aboutEvent.isHidden = true
     eventCollectionView.isHidden = false
+    AppDelegate.shared.buttonClickSound()
   }
   
   @objc func closeAbout() {
@@ -167,6 +169,7 @@ class PreviewViewController: UIViewController {
     openAboutEventView.isHidden = true
     aboutEvent.isHidden = false
     eventCollectionView.isHidden = true
+    AppDelegate.shared.buttonClickSound()
   }
   
   private func makeConstraints() {

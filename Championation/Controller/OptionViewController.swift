@@ -232,7 +232,7 @@ class OptionViewController: UIViewController {
     soundOnButton.setBackgroundImage(onImageGreen, for: .normal)
     soundOffButton.setBackgroundImage(offImageGray, for: .normal)
     AppDelegate.shared.volumeEnable = true
-    AppDelegate.shared.playAudioFile()
+    AppDelegate.shared.buttonClickSound()
   }
   
   @objc func soundOff() {
@@ -241,7 +241,7 @@ class OptionViewController: UIViewController {
     soundOnButton.setBackgroundImage(onImageGray, for: .normal)
     soundOffButton.setBackgroundImage(offImageGreen, for: .normal)
     AppDelegate.shared.volumeEnable = false
-    AppDelegate.shared.playAudioFile()
+    AppDelegate.shared.buttonClickSound()
   }
   
   @objc func automaticAdditionOn() {
@@ -249,7 +249,7 @@ class OptionViewController: UIViewController {
     let offImageGray = UIImage(named: "OffGrayButton")
     automaticAdditionOnButton.setBackgroundImage(onImageGreen, for: .normal)
     automaticAdditionOffButton.setBackgroundImage(offImageGray, for: .normal)
-    AppDelegate.shared.playAudioFile()
+    AppDelegate.shared.buttonClickSound()
   }
   
   @objc func automaticAdditionOff() {
@@ -257,7 +257,7 @@ class OptionViewController: UIViewController {
     let offImageGreen = UIImage(named: "OffGreenButton")
     automaticAdditionOnButton.setBackgroundImage(onImageGray, for: .normal)
     automaticAdditionOffButton.setBackgroundImage(offImageGreen, for: .normal)
-    AppDelegate.shared.playAudioFile()
+    AppDelegate.shared.buttonClickSound()
   }
   
   @objc func notificationsOn() {
@@ -265,7 +265,7 @@ class OptionViewController: UIViewController {
     let offImageGray = UIImage(named: "OffGrayButton")
     notificationOnButton.setBackgroundImage(onImageGreen, for: .normal)
     notificationOffButton.setBackgroundImage(offImageGray, for: .normal)
-    AppDelegate.shared.playAudioFile()
+    AppDelegate.shared.buttonClickSound()
   }
   
   @objc func notificationsOff() {
@@ -273,11 +273,11 @@ class OptionViewController: UIViewController {
     let offImageGreen = UIImage(named: "OffGreenButton")
     notificationOnButton.setBackgroundImage(onImageGray, for: .normal)
     notificationOffButton.setBackgroundImage(offImageGreen, for: .normal)
-    AppDelegate.shared.playAudioFile()
+    AppDelegate.shared.buttonClickSound()
   }
   
   @objc func startPagePicker() {
-    AppDelegate.shared.playAudioFile()
+    AppDelegate.shared.buttonClickSound()
     
     openStartPageSelector.isHidden = false
     openStartPageSelectorView.isHidden = false
@@ -309,7 +309,7 @@ class OptionViewController: UIViewController {
   }
   
   @objc func startPagePickerClose() {
-    AppDelegate.shared.playAudioFile()
+    AppDelegate.shared.buttonClickSound()
     
     if startPageSelector.titleLabel?.text != "Schedule" {
       startPageSelector.setTitle("Schedule", for: .normal)
