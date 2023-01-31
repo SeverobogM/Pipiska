@@ -38,6 +38,8 @@ final class MatchCollectionViewCell: UICollectionViewCell {
     let label = UILabel()
     label.text = "Team One"
     label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+      label.numberOfLines = 0
+      label.font = label.font.withSize(13)
     label.textAlignment = .center
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
@@ -46,6 +48,8 @@ final class MatchCollectionViewCell: UICollectionViewCell {
   let secondName: UILabel = {
     let label = UILabel()
     label.text = "Team Two"
+      label.numberOfLines = 0
+      label.font = label.font.withSize(13)
     label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     label.textAlignment = .center
     label.translatesAutoresizingMaskIntoConstraints = false
@@ -53,7 +57,7 @@ final class MatchCollectionViewCell: UICollectionViewCell {
   }()
   
   let dateLabel: UILabel = {
-    let label = UILabel()
+    var label = UILabel()
     label.text = "20.02.2023"
     label.font = label.font.withSize(20)
     label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
@@ -61,16 +65,6 @@ final class MatchCollectionViewCell: UICollectionViewCell {
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
   }()
-  
-//  let timeLabel: UILabel = {
-//    let label = UILabel()
-//    label.text = "20:00"
-//    label.font = label.font.withSize(20)
-//    label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-//    label.textAlignment = .center
-//    label.translatesAutoresizingMaskIntoConstraints = false
-//    return label
-//  }()
   
   let isSelectedButton: UIButton = {
     let button = UIButton()
@@ -152,11 +146,11 @@ final class MatchCollectionViewCell: UICollectionViewCell {
       secondLogo.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 18),
       secondLogo.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -48),
       
-      firstName.centerXAnchor.constraint(equalTo: firstLogo.centerXAnchor),
       firstName.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -19),
+      firstName.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 2),
       
       secondName.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -19),
-      secondName.centerXAnchor.constraint(equalTo: secondLogo.centerXAnchor),
+      secondName.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -2),
       
       dateLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 33),
       dateLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),

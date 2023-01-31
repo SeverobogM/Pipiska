@@ -18,7 +18,7 @@ final class LeagueCollectionViewCell: UICollectionViewCell {
   }()
   
   let leagueCountry: UIImageView = {
-    let image = UIImage(named: "England")
+      let image = UIImage(named: "0")
     let imageView = UIImageView(image: image)
     imageView.translatesAutoresizingMaskIntoConstraints = false
     return imageView

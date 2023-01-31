@@ -7,7 +7,7 @@ final class ScheduleViewController: UIViewController {
     private var league: SquashData
   
     
-    private var isUpcoming = false
+    private var isUpcoming = true
     
   var control: UISegmentedControl = {
     let segmentItems = ["Upcoming", "Past"]
@@ -112,7 +112,7 @@ final class ScheduleViewController: UIViewController {
       matchesCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
       matchesCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0),
       matchesCollectionView.topAnchor.constraint(equalTo: control.bottomAnchor),
-      matchesCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+      matchesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
     ])
   }
 
@@ -124,7 +124,7 @@ extension ScheduleViewController : UICollectionViewDelegate, UICollectionViewDat
       if isUpcoming {
           return UpcomingGames.count
       } else {
-          return PastGames.count
+          return PastGames.count - 4
       }
       
   }
@@ -142,8 +142,15 @@ extension ScheduleViewController : UICollectionViewDelegate, UICollectionViewDat
       if isUpcoming {
           cell.configure(match: UpcomingGames[indexPath.row], league: league)
       } else {
-          cell.configure(match: PastGames[indexPath.row], league: league)
+          cell.configure(match: PastGames[indexPath.row+3], league: league)
+          if PastGames[indexPath.row+3].score != "" {
+              cell.dateLabel.text = PastGames[indexPath.row+3].score
+          } else {
+              cell.dateLabel.text = "0:0"
+          }
+          cell.dateLabel.font = cell.dateLabel.font.withSize(25)
       }
+      
       
     return cell
   }

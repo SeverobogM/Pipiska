@@ -59,7 +59,7 @@ final class SelectedViewController: UIViewController {
       matchesCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
       matchesCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0),
       matchesCollectionView.topAnchor.constraint(equalTo: control.bottomAnchor),
-      matchesCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+      matchesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
       ])
   }
   
